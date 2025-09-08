@@ -4,6 +4,7 @@ import com.orion.UserServiceServerDemo.model.Users;
 import com.orion.UserServiceServerDemo.repo.UserRepo;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,14 @@ public class UserController {
 
     @Autowired
     private UserRepo userRepo;
+
+    @Value("${app.message}") // Injected from config-server
+    private String message;
+
+    @GetMapping("/msg")
+    public String getMessage() {
+        return message;
+    }
 
     @GetMapping
     public ResponseEntity<?> getAll() {
