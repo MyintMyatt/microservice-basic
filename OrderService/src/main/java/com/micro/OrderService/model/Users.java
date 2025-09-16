@@ -1,8 +1,9 @@
 package com.micro.OrderService.model;
 
-import lombok.Data;
+import lombok.*;
 
 @Data
+@Builder
 public class Users {
     private Integer id;
     private String email;

@@ -15,7 +15,7 @@ public class UserController {
     @Autowired
     private UserRepo userRepo;
 
-    @Value("${app.message}") // Injected from config-server
+    @Value("${app.message}")
     private String message;
 
     @GetMapping("/msg")
@@ -31,7 +31,8 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getUserById(
             @PathVariable(name = "id") int id
-    ) {
+    ) throws InterruptedException {
+//        Thread.sleep(50000);
         return ResponseEntity.ok(userRepo.findById(id));
     }
 
